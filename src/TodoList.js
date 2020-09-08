@@ -7,9 +7,11 @@ class TodoList extends Component {
     }
     render() {
 
-        const { data } = this.props;
+        const { data, onRemove, onUpdate  } = this.props;
         const list = data.map(
-            info => (<TodoInfo info={info} key={info.id} />)
+            info => (<TodoInfo onRemove ={onRemove}
+                onUpdate = {onUpdate}
+                  info={info} key={info.id} />)
         );
         return (
             <div>
