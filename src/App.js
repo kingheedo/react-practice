@@ -1,28 +1,29 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import TodoForm from './TodoForm'
 import Header from './Header'
-import CreateContent from './CreateContent'
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      contents: [
-        {
-          id: 1, content: ''
-        }
-      ]
-    }
-    // newContent = ()=>{
+import TodoList from './TodoList'
 
-    // }
+class App extends Component {
+  id = 0
+  state = {
+    todoData: [],
+  }
+
+  handleCreate = (data) => {
+    const { todoData } = this.state
+    this.setState({
+      todoData: todoData.concat(Object.assign({}, data, { id: this.id++ })), //...data, {id: this.id++}
+    })
   }
   render() {
     return (
       <div>
         <Header />
-        <CreateContent />
+        <TodoForm onCreate={this.handleCreate} />
+        <TodoList data={this.state.todoData} />
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App

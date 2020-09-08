@@ -7,9 +7,12 @@ class Header extends Component {
 
 
     render() {
+        const style = {
+            textDecoration: "none"
+        }
         return (
             <div>
-                <a href="subject" onClick={this.main}>
+                <a href="subject" onClick={this.main} style={style} >
                     "My Todo List"
                 </a>
             </div >
